@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  each entry in data 
+    h2= entry.title 
+    p= entry.entry
+
