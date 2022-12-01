@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
       //   console.log(row.entry);
       //   entries.push(row.entry);
       // });
-      console.log(rows[0].title);
+      //console.log(rows[0].title);
       res.render('index', { title: 'My Blog', data: rows});
     })
   });
