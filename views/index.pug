@@ -8,8 +8,14 @@ block content
       each entry in data
         h2= entry.title 
         p= entry.entry
+        button(type='button' id='edit-post-btn-'+entry.id class='edit-post-btn') Edit Post 
+        button(type='button' id='delete-post-btn-'+entry.id class='delete-post-btn') Delete Post
+      br
+      br
       button(type='button' id='create-post-btn') Create Post
       div(id='create-post-popup' style='display: none' class='modal')
+      div(id='edit-post-popup' style='display: none' class='modal')
+      div(id='delete-post-popup' style='display: none' class='modal')
       script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js')
       script(type='text/javascript' src='javascripts/script.js')
 
