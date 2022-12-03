@@ -15,6 +15,7 @@ var editModal = document.getElementById("edit-post-popup");
 
 for (const btn of editBtns) {
     btn.onclick = function() {
+        populateEditFields(btn.id);
         editModal.style.display = "block";
     };
 }
@@ -24,17 +25,10 @@ var deleteModal = document.getElementById("delete-post-popup");
 
 for (const btn of deleteBtns) {
     btn.onclick = function() {
+        populateDeleteFields(btn.id);
         deleteModal.style.display = "block";
     };
 }
-
-// editBtns.foreach(assignEditFunc);
-
-// function assignEditFunc(btn) {
-//     btn.onclick = function() {
-//         editModal.style.display = "block";
-//     };
-// }
   
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {

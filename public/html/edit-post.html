@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <div id="edit-post" class="modal-content">
     <script type="text/javascript" src="javascripts/popup.js"></script>
+    <script type="text/javascript" src="javascripts/edit-popup.js"></script>
     <span class="close">&times;</span>
     <h1>Edit Post</h1>
     <form action="editpost" method="post">
         <label for="title">Post title:</label>
-        <input type="text" id="title" name="title"><br><br>
-        <textarea name="entry" rows="10" cols="60"></textarea><br><br>
+        <input type="text" id="edit-title" name="title"><br><br>
+        <label for="entry">Post content:</label><br>
+        <textarea name="entry" id="edit-entry" rows="10" cols="60"></textarea><br><br>
+        <input type="hidden" id="edit-id" name="id" value="-1" />
         <input type="submit" value="Post">
     </form>
     <button class="close-btn">Cancel</button>

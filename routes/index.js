@@ -22,8 +22,8 @@ router.get('/', function(req, res, next) {
             });
           } else {
             console.log("Creating table and inserting some sample data");
-            db.exec(`CREATE TABLE blog (title TEXT, entry TEXT);
-                      insert into blog
+            db.exec(`CREATE TABLE blog (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, entry TEXT);
+                      insert into blog (title, entry)
                       values ("Yo waddup", "Here\'s some text"),
                       ("Yo waddup AGAIN","Here\'s some MORE text");`,
               () => {
@@ -34,31 +34,7 @@ router.get('/', function(req, res, next) {
           }
     });
   });
-
-
-  // const db = new sqlite3.Database(':memory:');
-
-  // db.serialize(() => {
-  //   db.run(`IF NOT (EXISTS (SELECT * 
-  //       FROM INFORMATION_SCHEMA.TABLES 
-  //       WHERE TABLE_NAME = 'blog'))
-  //     BEGIN
-  //       CREATE TABLE blog (title TEXT, entry TEXT)
-  //     END`)
-  //   // db.run('CREATE TABLE blog (title TEXT, entry TEXT)')
-
-  //   const stmt = db.prepare('INSERT INTO blog VALUES ("Yo waddup", "Here\'s some text"),("Yo waddup AGAIN","Here\'s some MORE text")')
-  //   stmt.run()
-  //   stmt.finalize()
-  //   db.all('SELECT rowid AS id, title, entry FROM blog',[], (err, rows) => {
-  //     res.render('index', { title: 'My Blog', data: rows});
-  //   })
-  // });
-
-  //db.close();
 });
-
-module.exports = router;
 
 router.post('/newpost', (req, res, next) => {
   var db = new sqlite3.Database('mydb.sqlite3',
@@ -73,16 +49,60 @@ router.post('/newpost', (req, res, next) => {
       title = sanitize(title);
       entry = sanitize(entry);
       console.log("inserting " + title);
-      db.exec(`insert into blog
-                values ('${title}','${entry}');`)
+      db.exec(`insert into blog (title, entry)
+                values ('${title}','${entry}');`);
       //redirect to homepage
       res.redirect('/');
     }
   );
 })
 
+router.post('/editpost', (req, res, next) => {
+  var db = new sqlite3.Database('mydb.sqlite3',
+    sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+    (err) => {
+      if (err) {
+        console.log("Getting error " + err);
+        exit(1);
+      }
+      var title = req.body.title;
+      var entry = req.body.entry;
+      var id = req.body.id;
+      title = sanitize(title);
+      entry = sanitize(entry);
+      id = sanitize(id);
+      console.log("editing post " + id);
+      db.exec(`update blog
+                set title = '${title}', entry = '${entry}'
+                where id = ${id}`);
+      //redirect to homepage
+      res.redirect('/');
+    }
+  );
+})
+
+router.post('/deletepost', (req, res, next) => {
+  var db = new sqlite3.Database('mydb.sqlite3',
+    sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+    (err) => {
+      if (err) {
+        console.log("Getting error " + err);
+        exit(1);
+      }
+      var id = req.body.id;
+      id = sanitize(id);
+      console.log("deleting post " + id);
+      db.exec(`delete from blog
+                where id = ${id}`);
+      //redirect to homepage
+      res.redirect('/');
+    }
+  );
+})
+
+module.exports = router;
+
 function sanitize(input) {
-  //let output = input.replace(/\\/g, "\\\\");
   let output = input.replace(/\'/g, "\'\'");
   return output;
 }
