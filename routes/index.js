@@ -49,7 +49,9 @@ router.post('/newpost', (req, res, next) => {
       title = sanitize(title);
       entry = sanitize(entry);
       console.log("inserting " + title);
-      db.exec(`insert into blog (title, entry)
+      // console.log("entry content:\n"+entry);
+      db.exec(`
+                insert into blog (title, entry)
                 values ('${title}','${entry}');`);
       //redirect to homepage
       res.redirect('/');
@@ -74,7 +76,7 @@ router.post('/editpost', (req, res, next) => {
       console.log("editing post " + id);
       db.exec(`update blog
                 set title = '${title}', entry = '${entry}'
-                where id = ${id}`);
+                where id = '${id}'`);
       //redirect to homepage
       res.redirect('/');
     }
@@ -93,7 +95,7 @@ router.post('/deletepost', (req, res, next) => {
       id = sanitize(id);
       console.log("deleting post " + id);
       db.exec(`delete from blog
-                where id = ${id}`);
+                where id = '${id}'`);
       //redirect to homepage
       res.redirect('/');
     }

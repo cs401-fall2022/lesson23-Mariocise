@@ -1,5 +1,5 @@
 function populateEditFields(idStr) {
-    let id = idStr.slice(-1);
+    let id = idStr.substring(14);
     // console.log("Entry ID is "+id);
     let title = document.getElementById("title-"+id).textContent;
     // console.log(title);

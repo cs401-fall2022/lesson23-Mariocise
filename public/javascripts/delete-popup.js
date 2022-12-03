@@ -1,5 +1,5 @@
 function populateDeleteFields(idStr) {
-    let id = idStr.slice(-1);
+    let id = idStr.substring(16);
 
     document.getElementById("delete-id").value = id;
 }

@@ -7,7 +7,7 @@ block content
       h1= title
       each entry in data
         h2(id='title-'+entry.id)= entry.title 
-        p(id='entry-'+entry.id)= entry.entry
+        p(id='entry-'+entry.id style='white-space:pre;')= entry.entry 
         button(type='button' id='edit-post-btn-'+entry.id class='edit-post-btn') Edit Post 
         button(type='button' id='delete-post-btn-'+entry.id class='delete-post-btn') Delete Post
       br
