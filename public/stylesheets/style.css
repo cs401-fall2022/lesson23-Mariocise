@@ -1,11 +1,27 @@
+
 body {
+  font-family: Roboto, Helvetica, sans-serif;
+  background-color: rgb(48, 48, 48);
   padding: 50px;
+  padding-top: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: lightgray;
+  line-height: 1.5;
+}
+
+#title {
+  color: white;
+  font-size: 50px;
 }
 
 a {
   color: #00B7FF;
+}
+
+#container {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px;
+  background-color: white;
 }
 
 /* The Modal (background) */
@@ -29,7 +45,7 @@ a {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
 }
 
 /* The Close Button */

@@ -4,15 +4,17 @@ block content
   doctype html 
   html
     body
-      h1= title
+      h1(id='title')= title
+      button(type='button' id='create-post-btn' style='font-size:30px; margin:20px') Create Post
+      br
       each entry in data
-        h2(id='title-'+entry.id)= entry.title 
-        p(id='entry-'+entry.id style='white-space:pre;')= entry.entry 
-        button(type='button' id='edit-post-btn-'+entry.id class='edit-post-btn') Edit Post 
-        button(type='button' id='delete-post-btn-'+entry.id class='delete-post-btn') Delete Post
+        container(id='container')
+          h2(id='title-'+entry.id)= entry.title 
+          p(id='entry-'+entry.id style='white-space:pre;')= entry.entry 
+          button(type='button' id='edit-post-btn-'+entry.id class='edit-post-btn') Edit Post 
+          button(type='button' id='delete-post-btn-'+entry.id class='delete-post-btn') Delete Post
       br
       br
-      button(type='button' id='create-post-btn') Create Post
       div(id='create-post-popup' style='display: none' class='modal')
       div(id='edit-post-popup' style='display: none' class='modal')
       div(id='delete-post-popup' style='display: none' class='modal')

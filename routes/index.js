@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
           if (rows.length === 1) {
             console.log("Table exists!");
             db.all('SELECT rowid AS id, title, entry FROM blog',[], (err, rows) => {
+              rows.reverse();
               res.render('index', { title: 'My Blog', data: rows});
             });
           } else {
@@ -28,6 +29,7 @@ router.get('/', function(req, res, next) {
                       ("Yo waddup AGAIN","Here\'s some MORE text");`,
               () => {
                 db.all('SELECT rowid AS id, title, entry FROM blog',[], (err, rows) => {
+                  rows.reverse();
                   res.render('index', { title: 'My Blog', data: rows});
                 });
               });
