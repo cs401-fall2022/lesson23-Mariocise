@@ -1,7 +1,7 @@
 # Retrospective
 
-- name: Jane Doe
-- email: janedoe@u.boisestate.edu
+- name: Sam Humrichouse
+- email: samhumrichouse@u.boisestate.edu
 
 ## Instructions
 
@@ -21,12 +21,17 @@ Be safe CITE!
 
 ## Experience
 
-TODO
+The most difficult part of this lab was figuring out how to use SQLite properly with node.js.
+I didn't get very far with the database stuff in Lab 10, so that left a lot of learning to do 
+for this lab.
 
 ## Known issues or Bugs
 
-TODO
+NONE
 
 ## Sources used
 
-https://www.w3schools.com/ for modals
+https://www.w3schools.com/ for modals, including CSS copy-pasted from 
+https://www.w3schools.com/howto/howto_css_modals.asp
+
+https://stackoverflow.com/ for troubleshooting
